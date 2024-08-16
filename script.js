@@ -71,8 +71,8 @@ function generateCalendar() {
     let doyClass = `doy${(doy + tura) % 4}`;
     if (i >= firstDay && dayCount <= daysInMonth) {
       if (nps < 2) {
-        if (i % 7 === 5) if (doy % 4 === 3) doyClass = `doy2`;
-        if (i % 7 === 6) if (doy % 4 === 2) doyClass = `doy3`;
+        if (i % 7 === 5) if ((doy + tura) % 4 === 3) doyClass = `doy2`;
+        if (i % 7 === 6) if ((doy + tura) % 4 === 2) doyClass = `doy3`;
       }
       calendarHTML += `<td class="${doyClass}">${dayCount}</td>`;
       doy++;
