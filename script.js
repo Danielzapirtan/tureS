@@ -70,7 +70,7 @@ function generateCalendar() {
   for (let i = 0; i < 42; i++) {
     let doyClass = `doy${(doy + tura) % 4}`;
     if (i >= firstDay && dayCount <= daysInMonth) {
-      if (nps == 1) {
+      if (nps < 2) {
         if (i % 7 === 5) if (doy % 4 === 3) doyClass = `doy2`;
         if (i % 7 === 6) if (doy % 4 === 2) doyClass = `doy3`;
       }
