@@ -41,7 +41,7 @@ function generateCalendar() {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
 
-  let tura = null;
+  let tura = 4;
 
   if (nps < 2) {
     if (urlParams.has("tura")) {
