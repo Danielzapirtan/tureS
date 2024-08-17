@@ -18,7 +18,7 @@ function getCurrentYear() {
 }
 
 const startYear = getCurrentYear();
-const countYears = 14;
+const countYears = 2;
 const endYear = Math.min(startYear + countYears - 1, maxYear);
 
 function populateYears() {
@@ -36,6 +36,7 @@ generateCalendar();
 
 function generateCalendar() {
   const year = Math.floor(document.getElementById("yearSelector").value);
+  year = 2024;
   const month = Math.floor(document.getElementById("monthSelector").value);
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   const firstDay = new Date(year, month, 1).getDay();

@@ -1,38 +1,38 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calendar ture</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calendar ture</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
-</head>
+  <body>
+    Aplicație în revizie datorită apariției unor erori.<br />
+    Încercați peste câteva ore, dacă cumva nu funcționează pe dispozitivul
+    dvs.<br />
+    Vă mulțumim pentru înțelegere.<br />
+    <h2>Calendar ture</h2>
+    <label for="yearSelector">Selectează anul</label>
+    <select id="yearSelector" onchange="generateCalendar()"></select>
+    <label for="monthSelector">Selectează luna:</label>
+    <select id="monthSelector" onchange="generateCalendar()">
+      <option value="0">ianuarie</option>
+      <option value="1">februarie</option>
+      <option value="2">martie</option>
+      <option value="3">aprilie</option>
+      <option value="4">mai</option>
+      <option value="5">iunie</option>
+      <option value="6">iulie</option>
+      <option value="7">august</option>
+      <option value="8">septembrie</option>
+      <option value="9">octombrie</option>
+      <option value="10">noiembrie</option>
+      <option value="11">decembrie</option>
+    </select>
 
-<body>
-  <h2>Calendar ture</h2>
-  <label for="yearSelector">Selectează anul</label>
-  <select id="yearSelector" onchange="generateCalendar()">
-  </select>
-  <label for="monthSelector">Selectează luna:</label>
-  <select id="monthSelector" onchange="generateCalendar()">
-    <option value="0">ianuarie</option>
-    <option value="1">februarie</option>
-    <option value="2">martie</option>
-    <option value="3">aprilie</option>
-    <option value="4">mai</option>
-    <option value="5">iunie</option>
-    <option value="6">iulie</option>
-    <option value="7">august</option>
-    <option value="8">septembrie</option>
-    <option value="9">octombrie</option>
-    <option value="10">noiembrie</option>
-    <option value="11">decembrie</option>
-  </select>
+    <div id="calendarContainer"></div>
 
-  <div id="calendarContainer"></div>
-
-  <script src="script.js"></script>
-
-</body>
-
+    <script src="script.js"></script>
+  </body>
 </html>
