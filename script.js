@@ -24,7 +24,7 @@ function generateCalendar() {
 
   let tura = 4;
 
-  if (nps < 1) {
+  if (nps < 2) {
     if (urlParams.has("tura")) {
       const turaValue = urlParams.get("tura");
       if (
