@@ -13,24 +13,11 @@
     ore.<br>
     Vă mulțumim pentru înțelegere.<br>
     <h2>Calendar ture</h2>
-    <label for="yearSelector">Selectează anul</label>
-    <select id="yearSelector" onchange="generateCalendar()"></select>
-    <label for="monthSelector">Selectează luna:</label>
-    <select id="monthSelector" onchange="generateCalendar()">
-      <option value="0">ianuarie</option>
-      <option value="1">februarie</option>
-      <option value="2">martie</option>
-      <option value="3">aprilie</option>
-      <option value="4">mai</option>
-      <option value="5">iunie</option>
-      <option value="6">iulie</option>
-      <option value="7">august</option>
-      <option value="8">septembrie</option>
-      <option value="9">octombrie</option>
-      <option value="10">noiembrie</option>
-      <option value="11">decembrie</option>
-    </select>
-
+  <label for="yearSelector">Introduceți anul:</label>
+  <input type="number" id="yearSelector" onchange="generateCalendar()" />
+  <br />
+  <label for="monthSelector">Introduceți luna (1..12):</label>
+  <input type="number" id="monthSelector" onchange="generateCalendar()" />
     <div id="calendarContainer"></div>
 
     <script src="script.js"></script>
