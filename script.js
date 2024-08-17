@@ -7,8 +7,8 @@ monthSelector.value = new Date().getMonth() + 1;
 generateCalendar();
 
 function generateCalendar() {
-  const year = Math.floor(document.getElementById("yearSelector").value);
-  const month = Math.floor(document.getElementById("monthSelector").value) - 1;
+  let year = Math.floor(document.getElementById("yearSelector").value);
+  let month = Math.floor(document.getElementById("monthSelector").value) - 1;
   if (year < 2024 || year > 2037 || !year) {
     year = new Date().getFullYear();
     yearSelector.value = year;
