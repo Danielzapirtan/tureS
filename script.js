@@ -1,42 +1,14 @@
 const nps = 1;
 
 const yearSelector = document.getElementById("yearSelector");
-const defaultYear = 1970;
-const maxYear = 9999;
-
-function getCurrentYear() {
-  let currentYear;
-  try {
-    currentYear = new Date().getFullYear();
-  } catch {
-    currentYear = defaultYear;
-  }
-  if (currentYear > maxYear) {
-    currentYear = defaultYear;
-  }
-  return currentYear;
-}
-
-const startYear = getCurrentYear();
-const countYears = 2;
-const endYear = Math.min(startYear + countYears - 1, maxYear);
-
-function populateYears() {
-  for (let pyear = startYear; pyear <= endYear; pyear++) {
-    const option = document.createElement("option");
-    option.value = pyear;
-    option.text = pyear;
-    yearSelector.appendChild(option);
-  }
-  yearSelector.value = startYear;
-}
-
-//populateYears();
+yearSelector.value = new Date().getFullYear();
+const monthSelector = document.getElementById("monthSelector");
+monthSelector.value = new Date().getMonth() + 1;
 generateCalendar();
 
 function generateCalendar() {
   const year = Math.floor(document.getElementById("yearSelector").value);
-  const month = Math.floor(document.getElementById("monthSelector").value);
+  const month = Math.floor(document.getElementById("monthSelector").value) - 1;
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   const firstDay = new Date(year, month, 1).getDay();
   const queryString = window.location.search;
