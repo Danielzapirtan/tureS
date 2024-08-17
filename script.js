@@ -59,9 +59,9 @@ function generateCalendar() {
   } else {
     tura = 4;
   }
-  var date1 = new Date(year, month, 1);
-  var date0 = new Date(2024, 0, 1);
-  var doy = Math.ceil((date1 - date0) / 86400000);
+  const date1 = new Date(year, month, 1);
+  const date0 = new Date(2024, 0, 1);
+  let doy = Math.ceil((date1 - date0) / 86400000);
 
   let calendarHTML = `<table><tr><th>dum</th><th>lun</th><th>mar</th><th>mie</th><th>joi</th><th>vin</th><th>sâm</th></tr><tr>`;
 
