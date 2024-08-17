@@ -31,7 +31,7 @@ function populateYears() {
   yearSelector.value = startYear;
 }
 
-populateYears();
+//populateYears();
 generateCalendar();
 
 function generateCalendar() {
