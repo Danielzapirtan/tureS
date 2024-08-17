@@ -13,7 +13,7 @@ function generateCalendar() {
     year = new Date().getFullYear();
     yearSelector.value = year;
   }
-  if ((isNaN(month) || (month + 1 < 1) || month + 1 > 12 || !monthSelector.value) {
+  if ((isNaN(month) || (month + 1 < 1) || month + 1 > 12) {
     month = new Date().getMonth();
     monthSelector.value = month + 1;
   }
