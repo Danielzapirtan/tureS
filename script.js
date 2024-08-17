@@ -93,5 +93,6 @@ function generateCalendar() {
   }
 
   calendarHTML += `</tr></table>`;
+  if (!calendarHTML) alert(1);
   document.getElementById("calendarContainer").innerHTML = calendarHTML;
 }
