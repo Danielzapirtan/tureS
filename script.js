@@ -63,8 +63,7 @@ function generateCalendar() {
   var date0 = new Date(2024, 0, 1);
   var doy = Math.ceil((date1 - date0) / 86400000);
 
-  let calendarHTML =
-    "<table><tr><th>dum</th><th>lun</th><th>mar</th><th>mie</th><th>joi</th><th>vin</th><th>sâm</th></tr><tr>";
+  let calendarHTML = `<table><tr><th>dum</th><th>lun</th><th>mar</th><th>mie</th><th>joi</th><th>vin</th><th>sâm</th></tr><tr>`;
 
   let dayCount = 1;
 
@@ -79,11 +78,11 @@ function generateCalendar() {
       doy++;
       dayCount++;
     } else {
-      calendarHTML += "<td></td>";
+      calendarHTML += `<td></td>`;
     }
 
     if (i % 7 === 6 && dayCount <= daysInMonth) {
-      calendarHTML += "</tr><tr>";
+      calendarHTML += `</tr><tr>`;
     }
 
     if (dayCount > daysInMonth && i % 7 == 6) {
@@ -91,6 +90,6 @@ function generateCalendar() {
     }
   }
 
-  calendarHTML += "</tr></table>";
+  calendarHTML += `</tr></table>`;
   document.getElementById("calendarContainer").innerHTML = calendarHTML;
 }
