@@ -13,7 +13,7 @@ function generateCalendar() {
     year = new Date().getFullYear();
     yearSelector.value = year;
   }
-  if (month === "" || (month + 1 < 1) || month + 1 > 12) {
+  if (month + 1 > 12 || !monthSelector.value) {
     month = new Date().getMonth();
     monthSelector.value = month + 1;
   }
