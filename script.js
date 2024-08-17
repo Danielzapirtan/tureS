@@ -28,6 +28,7 @@ function populateYears() {
     option.text = year;
     yearSelector.appendChild(option);
   }
+  yearSelector.value = startYear;
 }
 
 populateYears();
