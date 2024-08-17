@@ -36,7 +36,6 @@ generateCalendar();
 
 function generateCalendar() {
   const year = Math.floor(document.getElementById("yearSelector").value);
-  year = 2024;
   const month = Math.floor(document.getElementById("monthSelector").value);
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   const firstDay = new Date(year, month, 1).getDay();
