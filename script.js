@@ -9,6 +9,14 @@ generateCalendar();
 function generateCalendar() {
   const year = Math.floor(document.getElementById("yearSelector").value);
   const month = Math.floor(document.getElementById("monthSelector").value) - 1;
+  if (year < 2024 || year > 2037 || !year) {
+    year = new Date().getFullYear();
+    yearSelector.value = year;
+  }
+  if (month + 1 > 12 || !monthSelector.value) {
+    month = new Date().getMonth();
+    monthSelector.value = month + 1;
+  }
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   const firstDay = new Date(year, month, 1).getDay();
   const queryString = window.location.search;
