@@ -35,8 +35,10 @@ function populateYears() {
 generateCalendar();
 
 function generateCalendar() {
-  const year = Math.floor(document.getElementById("yearSelector").value);
-  const month = Math.floor(document.getElementById("monthSelector").value);
+  //const year = Math.floor(document.getElementById("yearSelector").value);
+  //const month = Math.floor(document.getElementById("monthSelector").value);
+  const year = 2024;
+  const month = 7;
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   const firstDay = new Date(year, month, 1).getDay();
   const queryString = window.location.search;
