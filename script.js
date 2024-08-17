@@ -28,17 +28,15 @@ function populateYears() {
     option.text = year;
     yearSelector.appendChild(option);
   }
-  yearSelector.value = startYear;
+  //  yearSelector.value = startYear;
 }
 
-//populateYears();
+populateYears();
 generateCalendar();
 
 function generateCalendar() {
-  //const year = Math.floor(document.getElementById("yearSelector").value);
-  //const month = Math.floor(document.getElementById("monthSelector").value);
-  const year = 2024;
-  const month = 7;
+  const year = Math.floor(document.getElementById("yearSelector").value);
+  const month = Math.floor(document.getElementById("monthSelector").value);
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   const firstDay = new Date(year, month, 1).getDay();
   const queryString = window.location.search;
@@ -46,7 +44,7 @@ function generateCalendar() {
 
   let tura = 4;
 
-  if (nps < 2) {
+  if (nps < 1) {
     if (urlParams.has("tura")) {
       const turaValue = urlParams.get("tura");
       if (
@@ -93,6 +91,5 @@ function generateCalendar() {
   }
 
   calendarHTML += `</tr></table>`;
-  if (!calendarHTML) alert(1);
-  document.getElementById("calendarContainer").value = calendarHTML;
+  document.getElementById("calendarContainer").innerHTML = calendarHTML;
 }
