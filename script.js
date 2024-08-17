@@ -9,7 +9,7 @@ generateCalendar();
 function generateCalendar() {
   let year = Math.floor(document.getElementById("yearSelector").value);
   let month = Math.floor(document.getElementById("monthSelector").value) - 1;
-  if (year < 2024 || year > 2037 || !year) {
+  if (year < 2024 || year > 2037 || isNaN(year)) {
     year = new Date().getFullYear();
     yearSelector.value = year;
   }
