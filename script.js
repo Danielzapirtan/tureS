@@ -22,13 +22,13 @@ const countYears = 2;
 const endYear = Math.min(startYear + countYears - 1, maxYear);
 
 function populateYears() {
-  for (let year = startYear; year <= endYear; year++) {
+  for (let pyear = startYear; pyear <= endYear; pyear++) {
     const option = document.createElement("option");
-    option.value = year;
-    option.text = year;
+    option.value = pyear;
+    option.text = pyear;
     yearSelector.appendChild(option);
   }
-  //  yearSelector.value = startYear;
+  yearSelector.value = startYear;
 }
 
 populateYears();
