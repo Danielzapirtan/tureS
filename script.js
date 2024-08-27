@@ -1,22 +1,83 @@
 const nps = 1;
+const currentYear = new Date().getFullYear();
+let year = currentYear;
+let month = new Date().getMonth();
+const yearButtons = document.querySelectorAll('.year-buttons button');
+let iear = currentYear;
+yearButtons.forEach(button => {
+	button.textContent = iear;
+	iear++;
+});
+const monthNames = [
+	"ian",
+	"feb",
+	"mar",
+	"apr",
+	"mai",
+	"iun",
+	"iul",
+	"aug",
+	"sep",
+	"oct",
+	"noi",
+	"dec"
+];
 
-const yearSelector = document.getElementById("yearSelector");
-yearSelector.value = new Date().getFullYear();
-const monthSelector = document.getElementById("monthSelector");
-monthSelector.value = new Date().getMonth() + 1;
-generateCalendar();
+function highlight(button1) {
+	button1.classList.add("highlight");
+}
 
-function generateCalendar() {
-  let year = Math.floor(document.getElementById("yearSelector").value);
-  let month = Math.floor(document.getElementById("monthSelector").value) - 1;
-  if (year < 2024 || year > 2037 || !year) {
-    year = new Date().getFullYear();
-    yearSelector.value = year;
-  }
-  if ((month + 1 < 1) || (month + 1 > 12) || !monthSelector.value) {
-    month = new Date().getMonth();
-    monthSelector.value = month + 1;
-  }
+function lowlight(buttons) {
+	buttons.forEach(button1 => {
+		button1.classList.remove("highlight");
+	});
+}
+
+const monthButtons = document.querySelectorAll('.month-buttons button');
+const monthName = monthNames[month];
+monthButtons.forEach(button => {
+	if (monthName === button.textContent) {
+		lowlight(monthButtons);
+		highlight(button);
+	}
+});
+
+yearButtons.forEach(button => {
+	const year1 = parseInt(button.textContent);
+	if (year1 == currentYear) {
+		lowlight(yearButtons);
+		highlight(button);
+	}
+});
+
+monthButtons.forEach(button => {
+	button.addEventListener('click', () => {
+		const monthName = button.textContent;
+		let ix = 0;
+		monthNames.forEach(currMonthName => {
+			if (monthName == currMonthName) {
+				month = ix;
+			}
+			ix++;
+		});
+		lowlight(monthButtons);
+		highlight(button);
+		updateCalendar();
+	});
+});
+
+yearButtons.forEach(button => {
+	button.addEventListener('click', () => {
+		year = parseInt(button.textContent);
+		lowlight(yearButtons);
+		highlight(button);
+		updateCalendar();
+	});
+});
+
+updateCalendar();
+
+function updateCalendar() {
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   const firstDay = new Date(year, month, 1).getDay();
   const queryString = window.location.search;
