@@ -75,9 +75,9 @@ yearButtons.forEach(button => {
 	});
 });
 
-generateCalendar();
+updateCalendar();
 
-function generateCalendar() {
+function updateCalendar() {
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   const firstDay = new Date(year, month, 1).getDay();
   const queryString = window.location.search;
