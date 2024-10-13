@@ -1,9 +1,9 @@
 const nps = 1;
-const currentYear = new Date().getFullYear();
+const currentYear = new Date().getFullYear() + 1;
 let year = currentYear;
 let month = new Date().getMonth();
 const yearButtons = document.querySelectorAll('.year-buttons button');
-let iear = currentYear + 1;
+let iear = currentYear;
 yearButtons.forEach(button => {
 	button.textContent = iear;
 	iear++;
