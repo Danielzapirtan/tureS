@@ -1,5 +1,5 @@
 const nps = 1;
-const currentYear = new Date().getFullYear() + 1;
+const currentYear = new Date().getFullYear();
 let year = currentYear;
 let month = new Date().getMonth();
 const yearButtons = document.querySelectorAll('.year-buttons button');
