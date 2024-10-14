@@ -4,20 +4,6 @@ body, table, th, td {
 	margin: 20px;
 }
 
-/*button {
-	padding: 6px 14px;
-	font-size: 24px;
-	background-color: #0ff;
-	color: #f00;
-	border: none;
-	cursor: pointer;
-}
-
-button.highlight {
-	background-color: olive;
-	color: #fff;
-}*/
-
 table {
 	width: 100%;
 	border-collapse: collapse;
@@ -65,15 +51,10 @@ button {
 	margin-right: 5px;
 }
 
-.push-button:highlight {
-	box-shadow: 0 2px #0056b3; /* Shadow reduces on click */
-	transform: translateY(2px); /* Button moves down on click */
-}
-
-/*button:highlight {
-	box-shadow: 0 2px #0056b3;
+button:highlight {
+    box-shadow: 0 2px #0056b3;
 	transform: translateY(2px);
-}*/
+}
 
 button.highlight {
 	background-color: #28a745; /* Highlight the active button */
