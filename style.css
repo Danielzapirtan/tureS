@@ -47,7 +47,7 @@ button {
 	cursor: pointer;
 	border-radius: 4px;
 	box-shadow: 0 4px #0056b3;
-	transition: all 0.7s ease-in-out;
+	transition: all 0.4s ease-in-out;
 	margin-right: 5px;
 }
 
