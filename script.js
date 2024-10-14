@@ -1,13 +1,15 @@
-const nps = 1;
+const sundayDayOfWeek = 1;
 const currentYear = new Date().getFullYear();
 let year = currentYear;
 let month = new Date().getMonth();
 const yearButtons = document.querySelectorAll('.year-buttons button');
-let iear = currentYear;
+let indexYear = currentYear;
+
 yearButtons.forEach(button => {
-	button.textContent = iear;
-	iear++;
+	button.textContent = indexYear;
+	indexYear++;
 });
+
 const monthNames = [
 	"ian",
 	"feb",
@@ -43,8 +45,8 @@ monthButtons.forEach(button => {
 });
 
 yearButtons.forEach(button => {
-	const year1 = parseInt(button.textContent);
-	if (year1 == currentYear) {
+	const buttonYear = parseInt(button.textContent);
+	if (buttonYear == currentYear) {
 		lowlight(yearButtons);
 		highlight(button);
 	}
@@ -53,12 +55,12 @@ yearButtons.forEach(button => {
 monthButtons.forEach(button => {
 	button.addEventListener('click', () => {
 		const monthName = button.textContent;
-		let ix = 0;
+		let index = 0;
 		monthNames.forEach(currMonthName => {
 			if (monthName == currMonthName) {
-				month = ix;
+				month = index;
 			}
-			ix++;
+			index++;
 		});
 		lowlight(monthButtons);
 		highlight(button);
@@ -85,7 +87,7 @@ function updateCalendar() {
 
 	let tura = 4;
 
-	if (nps < 2) {
+	if (sundayDayOfWeek < 2) {
 		if (urlParams.has("tura")) {
 			const turaValue = urlParams.get("tura");
 			if (
@@ -100,23 +102,23 @@ function updateCalendar() {
 	} else {
 		tura = 4;
 	}
-	const date1 = new Date(year, month, 1);
-	const date0 = new Date(2024, 0, 1);
-	let doy = Math.ceil((date1 - date0) / 86400000);
+	const firstDayOfMonthDate = new Date(year, month, 1);
+	const refDate = new Date(2024, 0, 1);
+	let fakeDayOfYear = Math.ceil((firstDayOfMonthDate - refDate) / 86400000);
 
 	let calendarHTML = `<table><tr><th>dum</th><th>lun</th><th>mar</th><th>mie</th><th>joi</th><th>vin</th><th>sâm</th></tr><tr>`;
 
 	let dayCount = 1;
 
 	for (let i = 0; i < 42; i++) {
-		let doyClass = `doy${(doy + tura) % 4}`;
+		let fakeDayOfYearClass = `fakeDayOfYear${(fakeDayOfYear + tura) % 4}`;
 		if (i >= firstDay && dayCount <= daysInMonth) {
-			if (nps == 1) {
-				if (i % 7 === 5) if ((doy + tura) % 4 === 3) doyClass = `doy2`;
-				if (i % 7 === 6) if ((doy + tura) % 4 === 2) doyClass = `doy3`;
+			if (sundayDayOfWeek == 1) {
+				if (i % 7 === 5) if ((fakeDayOfYear + tura) % 4 === 3) fakeDayOfYearClass = `fakeDayOfYear2`;
+				if (i % 7 === 6) if ((fakeDayOfYear + tura) % 4 === 2) fakeDayOfYearClass = `fakeDayOfYear3`;
 			}
-			calendarHTML += `<td class="${doyClass}">${dayCount}</td>`;
-			doy++;
+			calendarHTML += `<td class="${fakeDayOfYearClass}">${dayCount}</td>`;
+			fakeDayOfYear++;
 			dayCount++;
 		} else {
 			calendarHTML += `<td></td>`;
