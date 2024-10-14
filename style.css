@@ -51,8 +51,11 @@ button {
 	margin-right: 5px;
 }
 
-button:hover {
-	color: red;
+@media (hover: hover) {
+	/* Hover styles for non-touch devices */
+	button:hover {
+		background-color: lightblue;
+	}
 }
 
 button:active {
