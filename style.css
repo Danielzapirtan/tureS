@@ -51,7 +51,11 @@ button {
 	margin-right: 5px;
 }
 
-button:highlight {
+button:hover {
+	color: red;
+}
+
+button:active {
     box-shadow: 0 2px #0056b3;
 	transform: translateY(2px);
 }
