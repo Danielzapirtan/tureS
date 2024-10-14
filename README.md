@@ -1,3 +1,7 @@
-Work shift calendar frontend web app for users that observe Saturday.
-You may append ?tura=2 to the url for the same default behaviour.
-1, 3 and 4 are for the other 3 shifts.
+Work shift calendar frontend web app
+URL parameters:
+- tura=1|2|3|4
+    Which shift the user is
+- sabat 0|1
+    Whether observe Saturday
+
