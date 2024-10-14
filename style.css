@@ -65,12 +65,12 @@ button {
 	margin-right: 5px;
 }
 
-button:active {
+button:highlight {
 	box-shadow: 0 2px #0056b3;
 	transform: translateY(2px);
 }
 
-button.active {
+button.highlight {
 	background-color: #28a745; /* Highlight the active button */
 	box-shadow: 0 4px #1e7e34;
 }
