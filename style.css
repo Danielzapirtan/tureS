@@ -4,7 +4,7 @@ body, table, th, td {
 	margin: 20px;
 }
 
-button {
+/*button {
 	padding: 6px 14px;
 	font-size: 24px;
 	background-color: #0ff;
@@ -16,7 +16,7 @@ button {
 button.highlight {
 	background-color: olive;
 	color: #fff;
-}
+}*/
 
 table {
 	width: 100%;
@@ -50,4 +50,21 @@ td.doy2 {
 
 td.doy3 {
 	background-color: #aaaaff;
+}
+
+.button {
+	background-color: #007bff; /* Button color */
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	font-size: 16px;
+	cursor: pointer;
+	border-radius: 4px;
+	box-shadow: 0 4px #0056b3; /* Shadow to indicate elevation */
+	transition: all 0.2s ease-in-out;
+}
+
+.button.highlight {
+	box-shadow: 0 2px #0056b3; /* Shadow reduces on click */
+	transform: translateY(2px); /* Button moves down on click */
 }
