@@ -54,7 +54,6 @@
     let linkElement = document.getElementById('altAranjamentLink');
     linkElement.href += '?tura=' + turaValue;
   }
-  document.getElementById("month").value = new Date().getMonth() + 1;
 </script>
 <label for="month">Alege luna:</label>
   <select id="month" onchange="generateCalendar()">
@@ -92,6 +91,7 @@
   </table>
 
   <script>
+      document.getElementById('month').value = new Date().getMonth() + 1;
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
       let tura = 0;
