@@ -1,56 +1,42 @@
 <!DOCTYPE html>
 <html lang="ro">
-
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Calendar de Ture - A shift schedule calendar">
+  <meta name="theme-color" content="#f2f2f2">
   <title>Calendar de Ture</title>
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="/manifest.json">
+  <!-- Apple Touch Icon for iOS -->
+  <link rel="apple-touch-icon" href="/icon-192x192.png">
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico">
   <style>
     table {
       border-collapse: collapse;
       width: 100%;
     }
-
-    th,
-    td {
+    th, td {
       border: 1px solid black;
       padding: 8px;
       text-align: center;
     }
-
     th {
       background-color: #f2f2f2;
     }
-
     .myShift {
       color: red;
     }
-
     .weekend {
       background-color: yellow;
     }
   </style>
 </head>
-
 <body>
   <h1>Calendar de Ture</h1>
 
-<script>
-  // Function to get the value of a URL parameter
-  function getParameterByName(name, url = window.location.href) {
-    name = name.replace(/[\[\]]/g, '\\$&');
-    let regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-        results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, ' '));
-  }
-
-  // Get the 'tura' parameter value
-  let turaValue = getParameterByName('tura');
-
-  // If 'tura' parameter exists, append it to the new URL
-</script>
-<label for="month">Alege luna:</label>
+  <label for="month">Alege luna:</label>
   <select id="month" onchange="generateCalendar()">
     <option value="1">Ianuarie</option>
     <option value="2">Februarie</option>
@@ -86,68 +72,93 @@
   </table>
 
   <script>
-      document.getElementById('month').value = new Date().getMonth() + 1;
-      const queryString = window.location.search;
-      const urlParams = new URLSearchParams(queryString);
-      let tura = 0;
-      if (urlParams.has("tura")) {
-        const turaValue = urlParams.get("tura");
-        if (
-          !isNaN(turaValue) &&
-          parseInt(turaValue) >= 1 &&
-          parseInt(turaValue) <= 4
-        ) {
-          tura = parseInt(turaValue) % 4;
-        }
-      }
+    // Function to get the value of a URL parameter
+    function getParameterByName(name, url = window.location.href) {
+      name = name.replace(/[\[\]]/g, '\\$&');
+      let regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+          results = regex.exec(url);
+      if (!results) return null;
+      if (!results[2]) return '';
+      return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
 
-      function generateCalendar() {
-        const month = document.getElementById('month').value;
-        const year = document.getElementById('year').value;
-        const daysInMonth = new Date(year, month, 0).getDate();
-        const daysRow = document.getElementById('days');
-        daysRow.innerHTML = '<th></th>';
-        for (let i = 1; i <= daysInMonth; i++) {
-          daysRow.innerHTML += `<th>${i}</th>`;
+    // Get the 'tura' parameter value
+    let turaValue = getParameterByName('tura');
+
+    document.getElementById('month').value = new Date().getMonth() + 1;
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    let tura = 0;
+    if (urlParams.has("tura")) {
+      const turaValue = urlParams.get("tura");
+      if (
+        !isNaN(turaValue) &&
+        parseInt(turaValue) >= 1 &&
+        parseInt(turaValue) <= 4
+      ) {
+        tura = parseInt(turaValue) % 4;
+      }
+    }
+
+    function generateCalendar() {
+      const month = document.getElementById('month').value;
+      const year = document.getElementById('year').value;
+      const daysInMonth = new Date(year, month, 0).getDate();
+      const daysRow = document.getElementById('days');
+      daysRow.innerHTML = '<th></th>';
+      for (let i = 1; i <= daysInMonth; i++) {
+        daysRow.innerHTML += `<th>${i}</th>`;
+      }
+      const calendarBody = document.getElementById('calendarBody');
+      calendarBody.innerHTML = '';
+      const employees = ['asMR', 'asMC', 'asFR', 'asCC'];
+      const shifts = ['Z', 'N', '-', '-'];
+      const referenceDate = new Date(2024, 11, 30);
+      const monthBegin = new Date(year, month - 1, 1);
+      const fakeDayOfYear = parseInt(Math.round((monthBegin - referenceDate) / 86400 / 1000)) % 4;
+      for (let shift = 0; shift < 4; shift++) {
+        const row = document.createElement('tr');
+        if (tura === shift) {
+          row.classList.add('myShift');
         }
-        const calendarBody = document.getElementById('calendarBody');
-        calendarBody.innerHTML = '';
-        const employees = ['asMR', 'asMC', 'asFR', 'asCC'];
-        const shifts = ['Z', 'N', '-', '-'];
-        const referenceDate = new Date(2024, 11, 30);
-        const monthBegin = new Date(year, month - 1, 1);
-        const fakeDayOfYear = parseInt(Math.round((monthBegin - referenceDate) / 86400 / 1000)) % 4;
-        for (let shift = 0; shift < 4; shift++) {
-          const row = document.createElement('tr');
-            if (tura === shift) {
-              row.classList.add('myShift');
-            }
-          row.innerHTML = `<td>${employees[shift]}</td>`;
-          for (let day = 1; day <= daysInMonth; day++) {
-            const cell = document.createElement('td');
-            const shiftIndex = (day + 7 - shift + fakeDayOfYear) % 4;
-            cell.innerHTML = shifts[shiftIndex];
-            // Apply yellow background to weekends and holidays (for simplicity, considering weekends only here)
-            const date = new Date(year, month - 1, day);
-            if (date.getDay() === 6 || date.getDay() === 0) {
-              cell.classList.add('weekend');
-            }
-            row.appendChild(cell);
+        row.innerHTML = `<td>${employees[shift]}</td>`;
+        for (let day = 1; day <= daysInMonth; day++) {
+          const cell = document.createElement('td');
+          const shiftIndex = (day + 7 - shift + fakeDayOfYear) % 4;
+          cell.innerHTML = shifts[shiftIndex];
+          const date = new Date(year, month - 1, day);
+          if (date.getDay() === 6 || date.getDay() === 0) {
+            cell.classList.add('weekend');
           }
-          calendarBody.appendChild(row);
+          row.appendChild(cell);
         }
+        calendarBody.appendChild(row);
       }
-      // Populate year options dynamically
-      const currentYear = new Date().getFullYear();
-      const yearSelect = document.getElementById('year');
-      for (let i = currentYear; i <= currentYear + 4; i++) {
-        const option = document.createElement('option');
-        option.value = i;
-        option.innerText = i;
-        yearSelect.appendChild(option);
-      }
-      generateCalendar();
+    }
+
+    // Populate year options dynamically
+    const currentYear = new Date().getFullYear();
+    const yearSelect = document.getElementById('year');
+    for (let i = currentYear; i <= currentYear + 4; i++) {
+      const option = document.createElement('option');
+      option.value = i;
+      option.innerText = i;
+      yearSelect.appendChild(option);
+    }
+    generateCalendar();
+
+    // Register service worker for PWA
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(registration => {
+            console.log('Service Worker registered with scope:', registration.scope);
+          })
+          .catch(error => {
+            console.error('Service Worker registration failed:', error);
+          });
+      });
+    }
   </script>
 </body>
-
 </html>
