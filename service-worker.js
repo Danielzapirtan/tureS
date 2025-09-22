@@ -1,11 +1,13 @@
 const CACHE_NAME = 'calendar-ture-v1';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/icon-192x192.png',
-  '/icon-512x512.png',
-  '/favicon.ico',
-  '/manifest.json'
+  './',
+  './index.html',
+  './icon-192x192.png',
+  './icon-512x512.png',
+  './favicon.ico',
+  './manifest.json'
+  './script.js',
+  './style.css'
 ];
 
 self.addEventListener('install', event => {
